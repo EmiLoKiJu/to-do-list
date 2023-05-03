@@ -1,5 +1,22 @@
 body {
-    display: flex;
-    justify-content: center;
-    background-color: rgb(246, 246, 246);
+  justify-content: center;
+  background-color: rgb(246, 246, 246);
+}
+
+.dflex {
+  display: flex;
+}
+
+.flexcol {
+  flex-direction: column;
+}
+
+.spacebetween {
+  justify-content: space-between;
+}
+
+.listcontainer {
+  margin: 16px;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
 }

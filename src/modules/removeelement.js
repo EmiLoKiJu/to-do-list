@@ -1,3 +1,4 @@
 const removeelement = (arr) => {
-  console.log('removing element');
-}
+};
+
+export default removeelement;

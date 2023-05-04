@@ -12,10 +12,10 @@ const iteratearray = (arr) => {
       <div class="listelement">${arr[i].description}</div>
     </div>
     <div class="3dotsicon"></div>
-    `
+    `;
     element.innerHTML = strelement;
     listelementcontainer.appendChild(element);
   }
-}
+};
 
 export default iteratearray;

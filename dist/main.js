@@ -715,17 +715,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_createlistelement_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/createlistelement.js */ "./src/modules/createlistelement.js");
 /* harmony import */ var _modules_iteratearray_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/iteratearray.js */ "./src/modules/iteratearray.js");
 /* harmony import */ var _modules_isStorageValid_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/isStorageValid.js */ "./src/modules/isStorageValid.js");
-// import _ from 'lodash';
 
 
 
 
-// function component(thiscomponent,str) {
-//   // Lodash, now imported by this script
-// thiscomponent.innerHTML = _.join([str], ' ');
-
-// return thiscomponent;
-// }
 
 let arraylist = [];
 const isStorage = (0,_modules_isStorageValid_js__WEBPACK_IMPORTED_MODULE_3__["default"])('localStorage');

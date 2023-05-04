@@ -31,9 +31,9 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [Awesome-books] <a name="about-project"></a>
+# 📖 [To-Do-List] <a name="about-project"></a>
 
-**[Awesome-books]** is a web site with a RWD.
+**[To-Do-List]** is a web site with a list of elements.
 
 ## 🛠 Built With <a name="VSC"></a>
 
@@ -73,16 +73,19 @@ Install Google Chrome or any browser that supports the above.
 
 ### Setup
 
-You don't need to setup this project
+Clone this repository:
+
+https://github.com/EmiLoKiJu/to-do-list.git
 
 ### Install
 
-You don't need to install this project
+Go to the folder where the repository has been cloned, and run this command:
+
+'npm install'
 
 ### Usage
 
-To run the project, execute the index.html
---->
+Execute the index.html in your browser, and feel free to use the webpage.
 
 ### Run tests
 

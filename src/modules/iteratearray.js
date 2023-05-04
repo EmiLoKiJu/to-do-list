@@ -18,7 +18,7 @@ const iteratearray = (arr) => {
     listelementcontainer.appendChild(element);
     const textdiv = document.querySelector('.listelement');
     textdiv.classList.add('yellowbg');
-    textdiv.addEventListener('dbclick', () => {
+    textdiv.addEventListener('dblclick', () => {
       const newinput = document.createElement('input');
       newinput.type = 'text';
       newinput.classList.add('yellowbg');

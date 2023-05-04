@@ -1,3 +1,5 @@
+/* eslint-disable no-use-before-define */
+
 const listelementcontainer = document.querySelector('.listelementcontainer');
 
 const switchelement = (inputelement, elementcontainer, arr, i) => {

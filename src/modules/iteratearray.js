@@ -28,10 +28,8 @@ editelement = (listelement, elementcontainer, arr, i) => {
     arr.splice(i, 1);
     for (let j = i; j < arr.length; j += 1) {
       arr[j].index = j + 1;
-      console.log('arr[j] is: ', arr[j]);
     }
     localStorage.setItem('ToDoList', JSON.stringify(arr));
-    console.log('arr: ', arr);
     iteratearray(arr);
   });
   newinput.addEventListener('blur', () => {

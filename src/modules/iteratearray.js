@@ -24,7 +24,9 @@ const editelement = (listelement, elementcontainer, arr, i) => {
   listelement.parentNode.replaceChild(newinput, listelement);
   newinput.focus();
   newinput.select();
+  let deletebuttonpressed = false;
   deletebutton.addEventListener('click', () => {
+    deletebuttonpressed = true;
     arr.splice(i, 1);
     for (let j = i; j < arr.length; j += 1) {
       arr[j].index = j + 1;
@@ -34,9 +36,14 @@ const editelement = (listelement, elementcontainer, arr, i) => {
   });
   newinput.addEventListener('blur', () => {
     setTimeout(() => {
-      deletebutton.classList.add('dnone');
-      threedots.classList.remove('dnone');
-      switchelement(newinput, elementcontainer);
+      if (!deletebuttonpressed) {
+        deletebutton.classList.add('dnone');
+        threedots.classList.remove('dnone');
+        arr[i].description = newinput.value;
+        localStorage.setItem('ToDoList', JSON.stringify(arr));
+        switchelement(newinput, elementcontainer, arr, i);
+      }
+      deletebuttonpressed = false;
     }, 100);
   });
 };

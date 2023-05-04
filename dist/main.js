@@ -488,6 +488,7 @@ const createlistelement = (str, arraylist) => {
   const newlistelement = Object.create(listElement);
   newlistelement.description = str;
   newlistelement.index = arraylist.length + 1;
+  newlistelement.completed = false;
   arraylist.push(newlistelement);
 };
 
@@ -546,9 +547,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* eslint-disable no-use-before-define */
+
 const listelementcontainer = document.querySelector('.listelementcontainer');
-let editelement;
-let iteratearray;
 
 const switchelement = (inputelement, elementcontainer, arr, i) => {
   const newlistelement = document.createElement('div');
@@ -560,7 +561,7 @@ const switchelement = (inputelement, elementcontainer, arr, i) => {
   });
 };
 
-editelement = (listelement, elementcontainer, arr, i) => {
+const editelement = (listelement, elementcontainer, arr, i) => {
   const threedots = elementcontainer.querySelector('.threedotsicon');
   const deletebutton = elementcontainer.querySelector('.deleteicon');
   deletebutton.classList.remove('dnone');
@@ -572,26 +573,31 @@ editelement = (listelement, elementcontainer, arr, i) => {
   listelement.parentNode.replaceChild(newinput, listelement);
   newinput.focus();
   newinput.select();
+  let deletebuttonpressed = false;
   deletebutton.addEventListener('click', () => {
+    deletebuttonpressed = true;
     arr.splice(i, 1);
     for (let j = i; j < arr.length; j += 1) {
       arr[j].index = j + 1;
-      console.log('arr[j] is: ', arr[j]);
     }
     localStorage.setItem('ToDoList', JSON.stringify(arr));
-    console.log('arr: ', arr);
     iteratearray(arr);
   });
   newinput.addEventListener('blur', () => {
     setTimeout(() => {
-      deletebutton.classList.add('dnone');
-      threedots.classList.remove('dnone');
-      switchelement(newinput, elementcontainer);
+      if (!deletebuttonpressed) {
+        deletebutton.classList.add('dnone');
+        threedots.classList.remove('dnone');
+        arr[i].description = newinput.value;
+        localStorage.setItem('ToDoList', JSON.stringify(arr));
+        switchelement(newinput, elementcontainer, arr, i);
+      }
+      deletebuttonpressed = false;
     }, 100);
   });
 };
 
-iteratearray = (arr) => {
+const iteratearray = (arr) => {
   listelementcontainer.innerHTML = ' ';
   for (let i = 0; i < arr.length; i += 1) {
     const element = document.createElement('div');

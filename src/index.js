@@ -12,23 +12,23 @@ import storageAvailable from './modules/isStorageValid.js';
 
 let arraylist = [];
 const isStorage = storageAvailable('localStorage');
+const inputElement = document.querySelector('.textinput');
+const enterbutton = document.querySelector('.enterbutton');
 
-const addelement = (event) => {
+const addelement = () => {
   createlistelement(inputElement.value, arraylist);
   localStorage.setItem('ToDoList', JSON.stringify(arraylist));
   iteratearray(arraylist);
-}
+};
 
-const inputElement = document.querySelector('.textinput');
-const enterbutton = document.querySelector('.enterbutton');
 inputElement.addEventListener('keyup', (event) => {
   event.preventDefault();
-  if (event.keyCode === 13 && inputElement.value != '') addelement(event);
+  if (event.keyCode === 13 && inputElement.value !== '') addelement();
 });
 
 enterbutton.addEventListener('click', (event) => {
   event.preventDefault();
-  if (inputElement.value != '') addelement(event);
+  if (inputElement.value !== '') addelement();
 });
 
 document.addEventListener('DOMContentLoaded', () => {

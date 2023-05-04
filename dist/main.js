@@ -487,59 +487,11 @@ const listElement = {
 const createlistelement = (str, arraylist) => {
   const newlistelement = Object.create(listElement);
   newlistelement.description = str;
-  newlistelement.index = arraylist.length+1;
+  newlistelement.index = arraylist.length + 1;
   arraylist.push(newlistelement);
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createlistelement);
-
-/***/ }),
-
-/***/ "./src/modules/editelement.js":
-/*!************************************!*\
-  !*** ./src/modules/editelement.js ***!
-  \************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _switchelement_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./switchelement.js */ "./src/modules/switchelement.js");
-
-
-const editelement = (listelement, elementcontainer, arr, i) => {
-  const threedots = elementcontainer.querySelector('.threedotsicon');
-  const deletebutton = elementcontainer.querySelector('.deleteicon');
-  deletebutton.classList.remove('dnone');
-  threedots.classList.add('dnone');
-  const newinput = document.createElement('input');
-  newinput.type = 'text';
-  newinput.classList.add('yellowbg');
-  newinput.value = listelement.innerText;
-  listelement.parentNode.replaceChild(newinput, listelement);
-  newinput.focus();
-  newinput.select();
-  deletebutton.addEventListener('click', () => {
-  arr.splice(i, 1);
-    for (let j = i; j < arr.length; j += 1) {
-      arr[j].index = j + 1;
-      console.log('arr[j] is: ', arr[j]);
-    }
-    localStorage.setItem('ToDoList', JSON.stringify(arr));
-    console.log('arr: ', arr);
-    iteratearray(arr);
-  });
-  newinput.addEventListener('blur', () => {
-    setTimeout(() => {
-      deletebutton.classList.add('dnone');
-      threedots.classList.remove('dnone');
-      (0,_switchelement_js__WEBPACK_IMPORTED_MODULE_0__["default"])(newinput, elementcontainer);
-    }, 100);
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (editelement);
 
 /***/ }),
 
@@ -594,10 +546,48 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _editelement_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./editelement.js */ "./src/modules/editelement.js");
-
-
 const listelementcontainer = document.querySelector('.listelementcontainer');
+
+const switchelement = (inputelement, elementcontainer, arr, i) => {
+  const newlistelement = document.createElement('div');
+  newlistelement.classList.add('listelement');
+  newlistelement.innerText = inputelement.value;
+  inputelement.parentNode.replaceChild(newlistelement, inputelement);
+  newlistelement.addEventListener('dblclick', () => {
+    editelement(newlistelement, elementcontainer, arr, i);
+  });
+};
+
+const editelement = (listelement, elementcontainer, arr, i) => {
+  const threedots = elementcontainer.querySelector('.threedotsicon');
+  const deletebutton = elementcontainer.querySelector('.deleteicon');
+  deletebutton.classList.remove('dnone');
+  threedots.classList.add('dnone');
+  const newinput = document.createElement('input');
+  newinput.type = 'text';
+  newinput.classList.add('yellowbg');
+  newinput.value = listelement.innerText;
+  listelement.parentNode.replaceChild(newinput, listelement);
+  newinput.focus();
+  newinput.select();
+  deletebutton.addEventListener('click', () => {
+    arr.splice(i, 1);
+    for (let j = i; j < arr.length; j += 1) {
+      arr[j].index = j + 1;
+      console.log('arr[j] is: ', arr[j]);
+    }
+    localStorage.setItem('ToDoList', JSON.stringify(arr));
+    console.log('arr: ', arr);
+    iteratearray(arr);
+  });
+  newinput.addEventListener('blur', () => {
+    setTimeout(() => {
+      deletebutton.classList.add('dnone');
+      threedots.classList.remove('dnone');
+      switchelement(newinput, elementcontainer);
+    }, 100);
+  });
+};
 
 const iteratearray = (arr) => {
   listelementcontainer.innerHTML = ' ';
@@ -624,39 +614,12 @@ const iteratearray = (arr) => {
     const specificcontainer = element.querySelector('.specificcontainer');
     specificcontainer.appendChild(listelement);
     listelement.addEventListener('dblclick', () => {
-      (0,_editelement_js__WEBPACK_IMPORTED_MODULE_0__["default"])(listelement, element, arr, i);
+      editelement(listelement, element, arr, i);
     });
   }
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (iteratearray);
-
-/***/ }),
-
-/***/ "./src/modules/switchelement.js":
-/*!**************************************!*\
-  !*** ./src/modules/switchelement.js ***!
-  \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _editelement_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./editelement.js */ "./src/modules/editelement.js");
-
-
-const switchelement = (inputelement, elementcontainer, arr, i) => {
-  const newlistelement = document.createElement('div');
-  newlistelement.classList.add('listelement');
-  newlistelement.innerText = inputelement.value;
-  inputelement.parentNode.replaceChild(newlistelement, inputelement);
-  newlistelement.addEventListener('dblclick', () => {
-    (0,_editelement_js__WEBPACK_IMPORTED_MODULE_0__["default"])(newlistelement, elementcontainer, arr, i);
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (switchelement);
 
 /***/ })
 
@@ -758,23 +721,23 @@ __webpack_require__.r(__webpack_exports__);
 
 let arraylist = [];
 const isStorage = (0,_modules_isStorageValid_js__WEBPACK_IMPORTED_MODULE_3__["default"])('localStorage');
+const inputElement = document.querySelector('.textinput');
+const enterbutton = document.querySelector('.enterbutton');
 
-const addelement = (event) => {
+const addelement = () => {
   (0,_modules_createlistelement_js__WEBPACK_IMPORTED_MODULE_1__["default"])(inputElement.value, arraylist);
   localStorage.setItem('ToDoList', JSON.stringify(arraylist));
   (0,_modules_iteratearray_js__WEBPACK_IMPORTED_MODULE_2__["default"])(arraylist);
-}
+};
 
-const inputElement = document.querySelector('.textinput');
-const enterbutton = document.querySelector('.enterbutton');
 inputElement.addEventListener('keyup', (event) => {
   event.preventDefault();
-  if (event.keyCode === 13 && inputElement.value != '') addelement(event);
+  if (event.keyCode === 13 && inputElement.value !== '') addelement();
 });
 
 enterbutton.addEventListener('click', (event) => {
   event.preventDefault();
-  if (inputElement.value != '') addelement(event);
+  if (inputElement.value !== '') addelement();
 });
 
 document.addEventListener('DOMContentLoaded', () => {

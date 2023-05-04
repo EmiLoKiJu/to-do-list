@@ -1,4 +1,6 @@
 const listelementcontainer = document.querySelector('.listelementcontainer');
+let editelement;
+let iteratearray;
 
 const switchelement = (inputelement, elementcontainer, arr, i) => {
   const newlistelement = document.createElement('div');
@@ -10,7 +12,7 @@ const switchelement = (inputelement, elementcontainer, arr, i) => {
   });
 };
 
-const editelement = (listelement, elementcontainer, arr, i) => {
+editelement = (listelement, elementcontainer, arr, i) => {
   const threedots = elementcontainer.querySelector('.threedotsicon');
   const deletebutton = elementcontainer.querySelector('.deleteicon');
   deletebutton.classList.remove('dnone');
@@ -41,7 +43,7 @@ const editelement = (listelement, elementcontainer, arr, i) => {
   });
 };
 
-const iteratearray = (arr) => {
+iteratearray = (arr) => {
   listelementcontainer.innerHTML = ' ';
   for (let i = 0; i < arr.length; i += 1) {
     const element = document.createElement('div');

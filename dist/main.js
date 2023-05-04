@@ -548,37 +548,62 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 const listelementcontainer = document.querySelector('.listelementcontainer');
 
+const switchelement = (element) => {
+  const newlistelement = document.createElement('div');
+  newlistelement.classList.add('listelement');
+  newlistelement.innerText = element.value;
+  element.parentNode.replaceChild(newlistelement, element);
+  newlistelement.addEventListener('dblclick', () => {
+    editelement(newlistelement);
+  });
+}
+
+const editelement = (listelement, element) => {
+  const treedots = element.querySelector('.threedotsicon');
+  const deletebutton = element.parentNode.querySelector('.deletebutton');
+  deletebutton.classList.remove('dnone');
+  threedots.classList.add('dnone');
+  const newinput = document.createElement('input');
+  newinput.type = 'text';
+  newinput.classList.add('yellowbg');
+  newinput.value = listelement.innerText;
+  listelement.parentNode.replaceChild(newinput, listelement);
+  newinput.focus();
+  newinput.select();
+  newinput.addEventListener('blur', () => {
+    deletebutton.classList.add('dnone');
+    threedots.classList.remove('dnone');
+    switchelement(newinput);
+  });
+}
+
 const iteratearray = (arr) => {
   listelementcontainer.innerHTML = ' ';
   for (let i = 0; i < arr.length; i += 1) {
     const element = document.createElement('div');
     element.classList.add('dflex');
     element.classList.add('spacebetween');
+    const listelement = document.createElement('div');
+    listelement.classList.add('listelement');
+    listelement.innerText = arr[i].description;
     const strelement = `
     <div class="dflex">
       <input type="checkbox" class="iscompleted">
-      <div class="listelement">${arr[i].description}</div>
+      <div class="specificcontainer">
+      </div>
     </div>
-    <div class="3dotsicon"><img class="icon" src="./img/3dotsicon.png" alt="grabme"></div>
+    <div>
+      <img class="icon threedotsicon" src="./img/threedotsicon.png" alt="grabme">
+      <img class="icon deleteicon dnone" src="./img/deleteicon.png" alt="delete">
+    </div>
     <div class="deletebutton dnone"><img class="icon" src="./img/deleteicon.png" alt="delete"></div>
     `;
     element.innerHTML = strelement;
     listelementcontainer.appendChild(element);
-    const textdiv = element.querySelector('.listelement');
-    textdiv.addEventListener('dbclick', () => {
-      const newinput = document.createElement('input');
-      newinput.type = 'text';
-      newinput.classList.add('yellowbg');
-      newinput.value = textdiv.innerText;
-      textdiv.parentNode.replaceChild(newinput, textdiv);
-      newinput.focus();
-      newinput.select();
-      newinput.addEventListener('blur', () => {
-        const newtextdiv = document.createElement('div');
-        newtextdiv.classList.add('listelement');
-        newtextdiv.innerText = newinput.value;
-        newinput.parentNode.replaceChild(newtextdiv, newinput);
-      });
+    const specificcontainer = element.querySelector('.specificcontainer');
+    specificcontainer.appendChild(listelement);
+    listelement.addEventListener('dblclick', () => {
+      editelement(listelement, element);
     });
   }
 };

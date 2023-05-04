@@ -16,7 +16,24 @@ body {
 }
 
 .listcontainer {
-  margin: 16px;
+  width: 50%;
   border: 1px solid #ccc;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.icon {
+  object-fit: contain;
+  width: 16px; 
+}
+
+.listcontainer div {
+  padding: 4px;
+}
+
+input[type="text" i] {
+  padding: 1px 4px;
+}
+
+.textinput {
+  width: 80%;
 }

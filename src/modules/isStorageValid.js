@@ -24,5 +24,5 @@ const storageAvailable = (type) => {
     );
   }
 };
-  
+
 export default storageAvailable;

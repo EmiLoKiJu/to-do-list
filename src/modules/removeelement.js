@@ -1,4 +1,4 @@
-const removeelement = (arr) => {
+const removeelement = () => {
 };
 
 export default removeelement;

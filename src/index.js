@@ -18,6 +18,7 @@ const enterbutton = document.querySelector('.enterbutton');
 const addelement = () => {
   createlistelement(inputElement.value, arraylist);
   localStorage.setItem('ToDoList', JSON.stringify(arraylist));
+  inputElement.value = '';
   iteratearray(arraylist);
 };
 

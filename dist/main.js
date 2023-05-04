@@ -735,6 +735,7 @@ const enterbutton = document.querySelector('.enterbutton');
 const addelement = () => {
   (0,_modules_createlistelement_js__WEBPACK_IMPORTED_MODULE_1__["default"])(inputElement.value, arraylist);
   localStorage.setItem('ToDoList', JSON.stringify(arraylist));
+  inputElement.value = '';
   (0,_modules_iteratearray_js__WEBPACK_IMPORTED_MODULE_2__["default"])(arraylist);
 };
 

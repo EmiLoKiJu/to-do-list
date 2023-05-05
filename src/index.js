@@ -7,6 +7,7 @@ let arraylist = [];
 const isStorage = storageAvailable('localStorage');
 const inputElement = document.querySelector('.textinput');
 const enterbutton = document.querySelector('.enterbutton');
+const clearcompleted = document.querySelector('.clearcompleted');
 
 const addelement = () => {
   createlistelement(inputElement.value, arraylist);
@@ -14,6 +15,12 @@ const addelement = () => {
   inputElement.value = '';
   iteratearray(arraylist);
 };
+
+clearcompleted.addEventListener('click', () => {
+  arraylist = arraylist.filter((arraylist) => arraylist.completed === false);
+  localStorage.setItem('ToDoList', JSON.stringify(arraylist));
+  iteratearray(arraylist);
+});
 
 inputElement.addEventListener('keyup', (event) => {
   event.preventDefault();

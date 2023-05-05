@@ -32,6 +32,7 @@ body {
 .icon {
   object-fit: contain;
   width: 16px;
+  cursor: pointer;
 }
 
 .listcontainer div {
@@ -43,5 +44,5 @@ input[type="text" i] {
 }
 
 .textinput {
-  width: 80%;
+  width: 75%;
 }

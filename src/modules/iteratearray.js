@@ -74,8 +74,21 @@ const iteratearray = (arr) => {
     listelementcontainer.appendChild(element);
     const specificcontainer = element.querySelector('.specificcontainer');
     specificcontainer.appendChild(listelement);
+    const iscompletedbox = element.querySelector('.iscompleted');
+    if (arr[i].completed) iscompletedbox.checked = true;
     listelement.addEventListener('dblclick', () => {
       editelement(listelement, element, arr, i);
+    });
+    iscompletedbox.addEventListener('change', () => {
+      if (iscompletedbox.checked) {
+        console.log('this is checked');
+        arr[i].completed = true;
+        localStorage.setItem('ToDoList', JSON.stringify(arr));
+      } else {
+        console.log('Checkbox is not checked');
+        arr[i].completed = false;
+        localStorage.setItem('ToDoList', JSON.stringify(arr));
+      }
     });
   }
 };

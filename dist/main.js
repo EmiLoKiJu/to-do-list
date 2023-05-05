@@ -574,6 +574,7 @@ const editelement = (listelement, elementcontainer, arr, i) => {
   newinput.focus();
   newinput.select();
   const clickhandler = () => {
+    // eslint-disable-next-line no-restricted-globals
     if (event.target !== deletebutton && !event.target.classList.contains('yellowbg')) {
       deletebutton.classList.add('dnone');
       threedots.classList.remove('dnone');
@@ -624,6 +625,14 @@ const iteratearray = (arr) => {
     specificcontainer.appendChild(listelement);
     listelement.addEventListener('dblclick', () => {
       editelement(listelement, element, arr, i);
+    });
+    const iscompletedbox = element.querySelector('.iscompleted');
+    iscompletedbox.addEventListener('change', () => {
+      if (undefined.checked) {
+        console.log('this is checked');
+      } else {
+        console.log('Checkbox is not checked');
+      }
     });
   }
 };

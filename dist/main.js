@@ -21,7 +21,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\r\n  justify-content: center;\r\n  background-color: rgb(246, 246, 246);\r\n}\r\n\r\n.dflex {\r\n  display: flex;\r\n}\r\n\r\n.flexcol {\r\n  flex-direction: column;\r\n}\r\n\r\n.spacebetween {\r\n  justify-content: space-between;\r\n}\r\n\r\n.dnone {\r\n  display: none;\r\n}\r\n\r\n.yellowbg {\r\n  background-color: yellow;\r\n}\r\n\r\n.listcontainer {\r\n  width: 50%;\r\n  border: 1px solid #ccc;\r\n  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.icon {\r\n  object-fit: contain;\r\n  width: 16px;\r\n}\r\n\r\n.listcontainer div {\r\n  padding: 4px;\r\n}\r\n\r\ninput[type=\"text\" i] {\r\n  padding: 0 4px;\r\n}\r\n\r\n.textinput {\r\n  width: 80%;\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;EACE,uBAAuB;EACvB,oCAAoC;AACtC;;AAEA;EACE,aAAa;AACf;;AAEA;EACE,sBAAsB;AACxB;;AAEA;EACE,8BAA8B;AAChC;;AAEA;EACE,aAAa;AACf;;AAEA;EACE,wBAAwB;AAC1B;;AAEA;EACE,UAAU;EACV,sBAAsB;EACtB,0CAA0C;AAC5C;;AAEA;EACE,mBAAmB;EACnB,WAAW;AACb;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,cAAc;AAChB;;AAEA;EACE,UAAU;AACZ","sourcesContent":["body {\r\n  justify-content: center;\r\n  background-color: rgb(246, 246, 246);\r\n}\r\n\r\n.dflex {\r\n  display: flex;\r\n}\r\n\r\n.flexcol {\r\n  flex-direction: column;\r\n}\r\n\r\n.spacebetween {\r\n  justify-content: space-between;\r\n}\r\n\r\n.dnone {\r\n  display: none;\r\n}\r\n\r\n.yellowbg {\r\n  background-color: yellow;\r\n}\r\n\r\n.listcontainer {\r\n  width: 50%;\r\n  border: 1px solid #ccc;\r\n  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.icon {\r\n  object-fit: contain;\r\n  width: 16px;\r\n}\r\n\r\n.listcontainer div {\r\n  padding: 4px;\r\n}\r\n\r\ninput[type=\"text\" i] {\r\n  padding: 0 4px;\r\n}\r\n\r\n.textinput {\r\n  width: 80%;\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\r\n  justify-content: center;\r\n  background-color: rgb(246, 246, 246);\r\n}\r\n\r\n.dflex {\r\n  display: flex;\r\n}\r\n\r\n.flexcol {\r\n  flex-direction: column;\r\n}\r\n\r\n.spacebetween {\r\n  justify-content: space-between;\r\n}\r\n\r\n.dnone {\r\n  display: none;\r\n}\r\n\r\n.yellowbg {\r\n  background-color: yellow;\r\n}\r\n\r\n.listcontainer {\r\n  width: 50%;\r\n  border: 1px solid #ccc;\r\n  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.icon {\r\n  object-fit: contain;\r\n  width: 16px;\r\n  cursor: pointer;\r\n}\r\n\r\n.listcontainer div {\r\n  padding: 4px;\r\n}\r\n\r\ninput[type=\"text\" i] {\r\n  padding: 0 4px;\r\n}\r\n\r\n.textinput {\r\n  width: 80%;\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;EACE,uBAAuB;EACvB,oCAAoC;AACtC;;AAEA;EACE,aAAa;AACf;;AAEA;EACE,sBAAsB;AACxB;;AAEA;EACE,8BAA8B;AAChC;;AAEA;EACE,aAAa;AACf;;AAEA;EACE,wBAAwB;AAC1B;;AAEA;EACE,UAAU;EACV,sBAAsB;EACtB,0CAA0C;AAC5C;;AAEA;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;AACjB;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,cAAc;AAChB;;AAEA;EACE,UAAU;AACZ","sourcesContent":["body {\r\n  justify-content: center;\r\n  background-color: rgb(246, 246, 246);\r\n}\r\n\r\n.dflex {\r\n  display: flex;\r\n}\r\n\r\n.flexcol {\r\n  flex-direction: column;\r\n}\r\n\r\n.spacebetween {\r\n  justify-content: space-between;\r\n}\r\n\r\n.dnone {\r\n  display: none;\r\n}\r\n\r\n.yellowbg {\r\n  background-color: yellow;\r\n}\r\n\r\n.listcontainer {\r\n  width: 50%;\r\n  border: 1px solid #ccc;\r\n  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.icon {\r\n  object-fit: contain;\r\n  width: 16px;\r\n  cursor: pointer;\r\n}\r\n\r\n.listcontainer div {\r\n  padding: 4px;\r\n}\r\n\r\ninput[type=\"text\" i] {\r\n  padding: 0 4px;\r\n}\r\n\r\n.textinput {\r\n  width: 80%;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -623,8 +623,21 @@ const iteratearray = (arr) => {
     listelementcontainer.appendChild(element);
     const specificcontainer = element.querySelector('.specificcontainer');
     specificcontainer.appendChild(listelement);
+    const iscompletedbox = element.querySelector('.iscompleted');
+    if (arr[i].completed) iscompletedbox.checked = true;
     listelement.addEventListener('dblclick', () => {
       editelement(listelement, element, arr, i);
+    });
+    iscompletedbox.addEventListener('change', () => {
+      if (iscompletedbox.checked) {
+        console.log('this is checked');
+        arr[i].completed = true;
+        localStorage.setItem('ToDoList', JSON.stringify(arr));
+      } else {
+        console.log('Checkbox is not checked');
+        arr[i].completed = false;
+        localStorage.setItem('ToDoList', JSON.stringify(arr));
+      }
     });
   }
 };
@@ -726,6 +739,7 @@ let arraylist = [];
 const isStorage = (0,_modules_isStorageValid_js__WEBPACK_IMPORTED_MODULE_3__["default"])('localStorage');
 const inputElement = document.querySelector('.textinput');
 const enterbutton = document.querySelector('.enterbutton');
+const clearcompleted = document.querySelector('.clearcompleted');
 
 const addelement = () => {
   (0,_modules_createlistelement_js__WEBPACK_IMPORTED_MODULE_1__["default"])(inputElement.value, arraylist);
@@ -733,6 +747,12 @@ const addelement = () => {
   inputElement.value = '';
   (0,_modules_iteratearray_js__WEBPACK_IMPORTED_MODULE_2__["default"])(arraylist);
 };
+
+clearcompleted.addEventListener('click', () => {
+  arraylist = arraylist.filter((arraylist) => arraylist.completed === false);
+  localStorage.setItem('ToDoList', JSON.stringify(arraylist));
+  (0,_modules_iteratearray_js__WEBPACK_IMPORTED_MODULE_2__["default"])(arraylist);
+});
 
 inputElement.addEventListener('keyup', (event) => {
   event.preventDefault();

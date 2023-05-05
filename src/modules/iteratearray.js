@@ -24,21 +24,30 @@ const editelement = (listelement, elementcontainer, arr, i) => {
   listelement.parentNode.replaceChild(newinput, listelement);
   newinput.focus();
   newinput.select();
-  deletebutton.addEventListener('click', () => {
+  const clickhandler = () => {
+    // eslint-disable-next-line no-restricted-globals
+    if (event.target !== deletebutton && !event.target.classList.contains('yellowbg')) {
+      deletebutton.classList.add('dnone');
+      threedots.classList.remove('dnone');
+      arr[i].description = newinput.value;
+      localStorage.setItem('ToDoList', JSON.stringify(arr));
+      switchelement(newinput, elementcontainer, arr, i);
+      deletebutton.removeEventListener('click', deletehandler);
+      document.removeEventListener('click', clickhandler);
+    }
+  };
+  const deletehandler = () => {
     arr.splice(i, 1);
     for (let j = i; j < arr.length; j += 1) {
       arr[j].index = j + 1;
     }
     localStorage.setItem('ToDoList', JSON.stringify(arr));
+    document.removeEventListener('click', clickhandler);
     iteratearray(arr);
-  });
-  newinput.addEventListener('blur', () => {
-    setTimeout(() => {
-      deletebutton.classList.add('dnone');
-      threedots.classList.remove('dnone');
-      switchelement(newinput, elementcontainer);
-    }, 100);
-  });
+    deletebutton.removeEventListener('click', deletehandler);
+  };
+  deletebutton.addEventListener('click', deletehandler);
+  document.addEventListener('click', clickhandler);
 };
 
 const iteratearray = (arr) => {

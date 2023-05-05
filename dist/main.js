@@ -488,6 +488,7 @@ const createlistelement = (str, arraylist) => {
   const newlistelement = Object.create(listElement);
   newlistelement.description = str;
   newlistelement.index = arraylist.length + 1;
+  newlistelement.completed = false;
   arraylist.push(newlistelement);
 };
 
@@ -546,9 +547,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* eslint-disable no-use-before-define */
+
 const listelementcontainer = document.querySelector('.listelementcontainer');
-let editelement;
-let iteratearray;
 
 const switchelement = (inputelement, elementcontainer, arr, i) => {
   const newlistelement = document.createElement('div');
@@ -560,7 +561,7 @@ const switchelement = (inputelement, elementcontainer, arr, i) => {
   });
 };
 
-editelement = (listelement, elementcontainer, arr, i) => {
+const editelement = (listelement, elementcontainer, arr, i) => {
   const threedots = elementcontainer.querySelector('.threedotsicon');
   const deletebutton = elementcontainer.querySelector('.deleteicon');
   deletebutton.classList.remove('dnone');
@@ -572,26 +573,32 @@ editelement = (listelement, elementcontainer, arr, i) => {
   listelement.parentNode.replaceChild(newinput, listelement);
   newinput.focus();
   newinput.select();
-  deletebutton.addEventListener('click', () => {
+  const clickhandler = () => {
+    if (event.target !== deletebutton && !event.target.classList.contains('yellowbg')) {
+      deletebutton.classList.add('dnone');
+      threedots.classList.remove('dnone');
+      arr[i].description = newinput.value;
+      localStorage.setItem('ToDoList', JSON.stringify(arr));
+      switchelement(newinput, elementcontainer, arr, i);
+      deletebutton.removeEventListener('click', deletehandler);
+      document.removeEventListener('click', clickhandler);
+    }
+  };
+  const deletehandler = () => {
     arr.splice(i, 1);
     for (let j = i; j < arr.length; j += 1) {
       arr[j].index = j + 1;
-      console.log('arr[j] is: ', arr[j]);
     }
     localStorage.setItem('ToDoList', JSON.stringify(arr));
-    console.log('arr: ', arr);
+    document.removeEventListener('click', clickhandler);
     iteratearray(arr);
-  });
-  newinput.addEventListener('blur', () => {
-    setTimeout(() => {
-      deletebutton.classList.add('dnone');
-      threedots.classList.remove('dnone');
-      switchelement(newinput, elementcontainer);
-    }, 100);
-  });
+    deletebutton.removeEventListener('click', deletehandler);
+  };
+  deletebutton.addEventListener('click', deletehandler);
+  document.addEventListener('click', clickhandler);
 };
 
-iteratearray = (arr) => {
+const iteratearray = (arr) => {
   listelementcontainer.innerHTML = ' ';
   for (let i = 0; i < arr.length; i += 1) {
     const element = document.createElement('div');
@@ -709,17 +716,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_createlistelement_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/createlistelement.js */ "./src/modules/createlistelement.js");
 /* harmony import */ var _modules_iteratearray_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/iteratearray.js */ "./src/modules/iteratearray.js");
 /* harmony import */ var _modules_isStorageValid_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/isStorageValid.js */ "./src/modules/isStorageValid.js");
-// import _ from 'lodash';
 
 
 
 
-// function component(thiscomponent,str) {
-//   // Lodash, now imported by this script
-// thiscomponent.innerHTML = _.join([str], ' ');
-
-// return thiscomponent;
-// }
 
 let arraylist = [];
 const isStorage = (0,_modules_isStorageValid_js__WEBPACK_IMPORTED_MODULE_3__["default"])('localStorage');
@@ -729,6 +729,7 @@ const enterbutton = document.querySelector('.enterbutton');
 const addelement = () => {
   (0,_modules_createlistelement_js__WEBPACK_IMPORTED_MODULE_1__["default"])(inputElement.value, arraylist);
   localStorage.setItem('ToDoList', JSON.stringify(arraylist));
+  inputElement.value = '';
   (0,_modules_iteratearray_js__WEBPACK_IMPORTED_MODULE_2__["default"])(arraylist);
 };
 

@@ -1,14 +1,7 @@
-// import _ from 'lodash';
 import './style.css';
 import createlistelement from './modules/createlistelement.js';
 import iteratearray from './modules/iteratearray.js';
 import storageAvailable from './modules/isStorageValid.js';
-// function component(thiscomponent,str) {
-//   // Lodash, now imported by this script
-// thiscomponent.innerHTML = _.join([str], ' ');
-
-// return thiscomponent;
-// }
 
 let arraylist = [];
 const isStorage = storageAvailable('localStorage');
@@ -18,6 +11,7 @@ const enterbutton = document.querySelector('.enterbutton');
 const addelement = () => {
   createlistelement(inputElement.value, arraylist);
   localStorage.setItem('ToDoList', JSON.stringify(arraylist));
+  inputElement.value = '';
   iteratearray(arraylist);
 };
 

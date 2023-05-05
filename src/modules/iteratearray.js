@@ -25,12 +25,13 @@ const editelement = (listelement, elementcontainer, arr, i) => {
   newinput.focus();
   newinput.select();
   const clickhandler = () => {
-    if (event.target !== deletebutton) {
+    if (event.target !== deletebutton && !event.target.classList.contains('yellowbg')) {
       deletebutton.classList.add('dnone');
       threedots.classList.remove('dnone');
       arr[i].description = newinput.value;
       localStorage.setItem('ToDoList', JSON.stringify(arr));
       switchelement(newinput, elementcontainer, arr, i);
+      deletebutton.removeEventListener('click', deletehandler);
       document.removeEventListener('click', clickhandler);
     }
   };

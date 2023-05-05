@@ -7,7 +7,8 @@ const listElement = {
 const createlistelement = (str, arraylist) => {
   const newlistelement = Object.create(listElement);
   newlistelement.description = str;
-  newlistelement.index = arraylist.length;
+  newlistelement.index = arraylist.length + 1;
+  newlistelement.completed = false;
   arraylist.push(newlistelement);
 };
 

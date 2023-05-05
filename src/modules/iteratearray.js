@@ -25,6 +25,7 @@ const editelement = (listelement, elementcontainer, arr, i) => {
   newinput.focus();
   newinput.select();
   const clickhandler = () => {
+    // eslint-disable-next-line no-restricted-globals
     if (event.target !== deletebutton && !event.target.classList.contains('yellowbg')) {
       deletebutton.classList.add('dnone');
       threedots.classList.remove('dnone');

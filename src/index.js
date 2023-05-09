@@ -6,7 +6,7 @@ import storageAvailable from './modules/isStorageValid.js';
 let arraylist = [];
 const isStorage = storageAvailable('localStorage');
 const inputElement = document.querySelector('.textinput');
-const enterbutton = document.querySelector('.enterbutton');
+const formtoadd = document.querySelector('form');
 const clearcompleted = document.querySelector('.clearcompleted');
 
 const addelement = () => {
@@ -18,16 +18,14 @@ const addelement = () => {
 
 clearcompleted.addEventListener('click', () => {
   arraylist = arraylist.filter((arraylist) => arraylist.completed === false);
+  for (let i = 0; i < arraylist.length; i += 1) {
+    arraylist[i].index = i + 1;
+  }
   localStorage.setItem('ToDoList', JSON.stringify(arraylist));
   iteratearray(arraylist);
 });
 
-inputElement.addEventListener('keyup', (event) => {
-  event.preventDefault();
-  if (event.keyCode === 13 && inputElement.value !== '') addelement();
-});
-
-enterbutton.addEventListener('click', (event) => {
+formtoadd.addEventListener('submit', (event) => {
   event.preventDefault();
   if (inputElement.value !== '') addelement();
 });

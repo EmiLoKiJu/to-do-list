@@ -24,7 +24,7 @@ const editelement = (listelement, elementcontainer, arr, i) => {
   listelement.parentNode.replaceChild(newinput, listelement);
   newinput.focus();
   newinput.select();
-  const clickhandler = () => {
+  const clickhandler = (event) => {
     // eslint-disable-next-line no-restricted-globals
     if (event.target !== deletebutton && !event.target.classList.contains('yellowbg')) {
       deletebutton.classList.add('dnone');
@@ -59,7 +59,7 @@ const iteratearray = (arr) => {
     const listelement = document.createElement('div');
     listelement.classList.add('listelement');
     listelement.innerText = arr[i].description;
-    const strelement = `
+    element.innerHTML = `
     <div class="dflex">
       <input type="checkbox" class="iscompleted">
       <div class="specificcontainer">
@@ -70,7 +70,6 @@ const iteratearray = (arr) => {
       <img class="icon deleteicon dnone" src="./img/deleteicon.png" alt="delete">
     </div>
     `;
-    element.innerHTML = strelement;
     listelementcontainer.appendChild(element);
     const specificcontainer = element.querySelector('.specificcontainer');
     specificcontainer.appendChild(listelement);
@@ -81,11 +80,9 @@ const iteratearray = (arr) => {
     });
     iscompletedbox.addEventListener('change', () => {
       if (iscompletedbox.checked) {
-        console.log('this is checked');
         arr[i].completed = true;
         localStorage.setItem('ToDoList', JSON.stringify(arr));
       } else {
-        console.log('Checkbox is not checked');
         arr[i].completed = false;
         localStorage.setItem('ToDoList', JSON.stringify(arr));
       }

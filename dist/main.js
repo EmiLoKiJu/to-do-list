@@ -573,7 +573,7 @@ const editelement = (listelement, elementcontainer, arr, i) => {
   listelement.parentNode.replaceChild(newinput, listelement);
   newinput.focus();
   newinput.select();
-  const clickhandler = () => {
+  const clickhandler = (event) => {
     // eslint-disable-next-line no-restricted-globals
     if (event.target !== deletebutton && !event.target.classList.contains('yellowbg')) {
       deletebutton.classList.add('dnone');
@@ -608,7 +608,7 @@ const iteratearray = (arr) => {
     const listelement = document.createElement('div');
     listelement.classList.add('listelement');
     listelement.innerText = arr[i].description;
-    const strelement = `
+    element.innerHTML = `
     <div class="dflex">
       <input type="checkbox" class="iscompleted">
       <div class="specificcontainer">
@@ -619,7 +619,6 @@ const iteratearray = (arr) => {
       <img class="icon deleteicon dnone" src="./img/deleteicon.png" alt="delete">
     </div>
     `;
-    element.innerHTML = strelement;
     listelementcontainer.appendChild(element);
     const specificcontainer = element.querySelector('.specificcontainer');
     specificcontainer.appendChild(listelement);
@@ -630,11 +629,9 @@ const iteratearray = (arr) => {
     });
     iscompletedbox.addEventListener('change', () => {
       if (iscompletedbox.checked) {
-        console.log('this is checked');
         arr[i].completed = true;
         localStorage.setItem('ToDoList', JSON.stringify(arr));
       } else {
-        console.log('Checkbox is not checked');
         arr[i].completed = false;
         localStorage.setItem('ToDoList', JSON.stringify(arr));
       }
@@ -738,7 +735,7 @@ __webpack_require__.r(__webpack_exports__);
 let arraylist = [];
 const isStorage = (0,_modules_isStorageValid_js__WEBPACK_IMPORTED_MODULE_3__["default"])('localStorage');
 const inputElement = document.querySelector('.textinput');
-const enterbutton = document.querySelector('.enterbutton');
+const formtoadd = document.querySelector('form');
 const clearcompleted = document.querySelector('.clearcompleted');
 
 const addelement = () => {
@@ -750,16 +747,14 @@ const addelement = () => {
 
 clearcompleted.addEventListener('click', () => {
   arraylist = arraylist.filter((arraylist) => arraylist.completed === false);
+  for (let i = 0; i < arraylist.length; i += 1) {
+    arraylist[i].index = i + 1;
+  }
   localStorage.setItem('ToDoList', JSON.stringify(arraylist));
   (0,_modules_iteratearray_js__WEBPACK_IMPORTED_MODULE_2__["default"])(arraylist);
 });
 
-inputElement.addEventListener('keyup', (event) => {
-  event.preventDefault();
-  if (event.keyCode === 13 && inputElement.value !== '') addelement();
-});
-
-enterbutton.addEventListener('click', (event) => {
+formtoadd.addEventListener('submit', (event) => {
   event.preventDefault();
   if (inputElement.value !== '') addelement();
 });
